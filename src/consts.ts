@@ -21,6 +21,7 @@ export const NAV_LINKS = [
 	{ href: '/newsletter', label: 'Newsletter' },
 	{ href: '/events', label: 'Events' },
 	{ href: '/training', label: 'Training' },
+	{ href: '/jobs', label: 'Jobs' },
 	{ href: '/gofundgeo', label: 'GoFundGeo' },
 ];
 

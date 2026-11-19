@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT_EMAIL, MAILING_LIST_URL, SITE_TITLE } from '../consts';
+
+// Where the UK open source geo community posts and finds vacancies. Kept in
+// this page rather than a content collection: these are links to other
+// people's job listings, not listings hosted by OSGeo:UK.
+const sources = [
+	{
+		title: 'GIS-Jobs mailing list',
+		href: 'https://www.jiscmail.ac.uk/cgi-bin/webadmin?A0=GIS-JOBS',
+		linkLabel: 'Browse or join GIS-Jobs',
+		description:
+			'The main UK list for GIS and geospatial vacancies, with plenty of open source roles. You can browse the archive without subscribing, or join the list to receive new posts by email.',
+	},
+	{
+		title: 'OSGeo jobs and resumes',
+		href: 'https://discourse.osgeo.org/c/jobs/68',
+		linkLabel: 'Visit the OSGeo jobs category',
+		description:
+			"The Foundation's jobs category on Discourse for FOSS4G roles and resumes, with posts from around the world.",
+	},
+	{
+		title: 'OSGeo jobs mailing list',
+		href: 'https://lists.osgeo.org/listinfo/jobs',
+		linkLabel: 'Join the OSGeo jobs list',
+		description:
+			'A moderated mailing list for job announcements and resumes relating to free and open source geospatial software.',
+	},
+	{
+		title: 'OSGeo wiki jobs board',
+		href: 'https://wiki.osgeo.org/wiki/Jobs_Board',
+		linkLabel: 'View the wiki jobs board',
+		description:
+			'The long-running community job board on the OSGeo wiki, where people post vacancies and resumes.',
+	},
+	{
+		title: 'OSGeo:UK mailing list',
+		href: MAILING_LIST_URL,
+		linkLabel: 'Join the OSGeo:UK list',
+		description:
+			'Open source geo vacancies in the UK are sometimes shared here alongside the usual community discussion.',
+	},
+];
+---
+
+<BaseLayout
+	title={`Jobs — ${SITE_TITLE}`}
+	description="Where to find open source geospatial job listings in the UK, including the GIS-Jobs mailing list and OSGeo's jobs board."
+>
+	<h1 class="section-title">Jobs</h1>
+	<p class="lead">
+		Looking for work in open source geospatial? OSGeo:UK does not run its own job board — these
+		are the places the community posts vacancies and looks for its next role.
+	</p>
+
+	<div class="card-grid">
+		{
+			sources.map((source) => (
+				<article class="osgeo-card job-source">
+					<h2>{source.title}</h2>
+					<p>{source.description}</p>
+					<a href={source.href} class="link-more" rel="noopener">
+						{source.linkLabel} &rarr;
+					</a>
+				</article>
+			))
+		}
+	</div>
+
+	<p class="jobs-cta">
+		Hiring for an open source geo role in the UK, or know of a listing we should add?
+		<a href={`mailto:${CONTACT_EMAIL}`} class="link-more"> Get in touch &rarr;</a>
+	</p>
+</BaseLayout>
+
+<style>
+	.lead {
+		font-size: var(--osgeo-text-body-lg);
+		margin-bottom: var(--osgeo-space-6);
+	}
+
+	.job-source h2 {
+		font-size: var(--osgeo-text-h3);
+		margin-bottom: var(--osgeo-space-2);
+	}
+
+	.jobs-cta {
+		margin-top: var(--osgeo-space-7);
+		padding-top: var(--osgeo-space-5);
+		border-top: 1px solid var(--osgeo-border);
+	}
+</style>
